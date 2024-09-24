@@ -1,6 +1,7 @@
 package com.myfood.cqrs.myfood.command.infrastucture.MySQL.entities;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -39,6 +40,9 @@ public class OrderEntity {
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "objOrder")
     @JoinColumn(name = "id_total_price")
     private TotalPriceEntity totalPrice;
+
+    @Column
+    private Date actualDate;
 
     public OrderEntity() {
         this.dishes = new ArrayList<>();
