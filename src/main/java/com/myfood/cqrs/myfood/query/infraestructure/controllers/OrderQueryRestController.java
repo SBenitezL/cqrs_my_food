@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/orders")
-public class OrderRestController {
+public class OrderQueryRestController {
     @Autowired
     private final IOrderServiceQuery service;
 
