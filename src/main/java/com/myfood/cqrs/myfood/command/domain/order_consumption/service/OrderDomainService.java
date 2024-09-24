@@ -1,5 +1,7 @@
 package com.myfood.cqrs.myfood.command.domain.order_consumption.service;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Service;
 
 import com.myfood.cqrs.myfood.command.domain.order_consumption.Order;
@@ -26,6 +28,7 @@ public class OrderDomainService implements IOrderDomainService {
         if (order == null)
             throw new ObjectNullException("Order is null...");
 
+        order.setActualDate(new Date());
         return order.changeState(state);
     }
 
@@ -37,6 +40,7 @@ public class OrderDomainService implements IOrderDomainService {
         if (dish == null)
             throw new ObjectNullException("Dish is null...");
 
+        order.setActualDate(new Date());
         return order.addDish(dish);
     }
 
@@ -48,6 +52,7 @@ public class OrderDomainService implements IOrderDomainService {
         if (idDish.isBlank())
             throw new ObjectNullException("Dish's id is null...");
 
+        order.setActualDate(new Date());
         return order.removeDish(idDish);
     }
 
@@ -58,7 +63,7 @@ public class OrderDomainService implements IOrderDomainService {
 
         if (ingredient == null)
             throw new ObjectNullException("Ingredient is null...");
-
+        
         return dish.addIngredient(ingredient);
     }
 

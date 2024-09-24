@@ -1,6 +1,7 @@
 package com.myfood.cqrs.myfood.command.domain.order_consumption;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,6 +23,7 @@ public class Order {
     private OrderState state;
     private List<Dish> dishes;
     private TotalPrice totalPrice;
+    private Date actualDate;
 
     public Order() {
         this.id_order = UUID.randomUUID().toString();
@@ -29,11 +31,13 @@ public class Order {
         this.state = new OrderState(0);
         this.dishes = new ArrayList<>();
         this.totalPrice = new TotalPrice();
+        this.actualDate = new Date();
     }
 
     public boolean changeState(int state) {
         this.state = new OrderState(state);
         this.getState().setId_state(id_order);
+        this.actualDate = new Date();
         return true;
     }
 
@@ -45,6 +49,7 @@ public class Order {
             throw new ObjectNullException("Dish is null...");
 
         this.dishes.add(dish);
+        this.actualDate = new Date();
         return true;
     }
 
@@ -58,6 +63,7 @@ public class Order {
         for (int i = 0; i < this.dishes.size(); i++) {
             if (this.dishes.get(i).getId_dish().equals(id)) {
                 this.dishes.remove(i);
+                this.actualDate = new Date();
                 return true;
             }
         }
