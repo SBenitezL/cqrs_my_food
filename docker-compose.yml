@@ -10,3 +10,16 @@ services:
       MONGO_INITDB_DATABASE: myfood_query
     ports:
       - "10002:27017"
+  my_food_database:
+    image: mysql:8.0.33
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: oracle
+      MYSQL_PASSWORD: oracle
+      MYSQL_DATABASE: my_food
+    restart: always
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10

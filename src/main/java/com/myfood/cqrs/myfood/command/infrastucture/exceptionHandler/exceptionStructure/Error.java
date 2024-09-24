@@ -1,4 +1,4 @@
-package com.unicauca.my_food.infrastucture.exceptionHandler.exceptionStructure;
+package com.myfood.cqrs.myfood.command.infrastucture.exceptionHandler.exceptionStructure;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
