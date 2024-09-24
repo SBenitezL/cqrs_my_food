@@ -6,7 +6,7 @@ import java.util.Date;
 import com.myfood.cqrs.myfood.query.domain.Order;
 import com.myfood.cqrs.myfood.query.domain.constants.OrderStateConstans;
 
-public interface IOrderService {
+public interface IOrderServiceQuery {
     List<Order> getAll();
 
     Order getById(String id);

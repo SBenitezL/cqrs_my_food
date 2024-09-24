@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.myfood.cqrs.myfood.query.application.IOrderService;
+import com.myfood.cqrs.myfood.query.application.IOrderServiceQuery;
 import com.myfood.cqrs.myfood.query.domain.Order;
 
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("api/orders")
 public class OrderRestController {
     @Autowired
-    private final IOrderService service;
+    private final IOrderServiceQuery service;
 
     @GetMapping("")
     public ResponseEntity<List<Order>> getAll() {

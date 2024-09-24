@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 @RequiredArgsConstructor
-public class OrderService implements IOrderService {
+public class OrderServiceQuery implements IOrderServiceQuery {
     @Autowired
     private final ModelMapper mapper;
     @Autowired
