@@ -23,7 +23,7 @@ import lombok.Data;
 public class OrderEntity {
     @Id
     @Column(length = 200)
-    private String id_order;
+    private String id;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "objOrder")
     @JoinColumn(name = "id_date")

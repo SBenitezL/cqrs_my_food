@@ -18,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Order {
-    private String id_order;
+    private String id;
     private OrderDate date;
     private OrderState state;
     private List<Dish> dishes;
@@ -26,7 +26,7 @@ public class Order {
     private Date actualDate;
 
     public Order() {
-        this.id_order = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().toString();
         this.date = new OrderDate();
         this.state = new OrderState(0);
         this.dishes = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Order {
 
     public boolean changeState(int state) {
         this.state = new OrderState(state);
-        this.getState().setId_state(id_order);
+        this.getState().setId_state(id);
         this.actualDate = new Date();
         return true;
     }
