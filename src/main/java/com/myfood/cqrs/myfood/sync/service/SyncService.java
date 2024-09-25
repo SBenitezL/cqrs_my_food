@@ -40,8 +40,7 @@ public class SyncService {
     private void updateOrders() {
         List<OrderEntity> modifieds = this.commandRepository.findAllByActualDateAfter(lastSyncDate);
         for (OrderEntity order : modifieds) {
-            Query query = new Query(Criteria.where("id").is(order.getId().toString()));
-            Update update = new Update();
+            this.queryRepository.deleteById(order.getId());
             OrderDocument mongoOrder = new OrderDocument(
                     order.getId(),
                     mapper.map(order.getDate(), OrderDateDocument.class),
@@ -49,9 +48,7 @@ public class SyncService {
                     mapper.map(order.getDishes(), new TypeToken<List<DishDocument>>() {
                     }.getType()),
                     mapper.map(order.getTotalPrice(), TotalPriceDocument.class));
-            update.set("orders", mongoOrder);
-            mongoOps.findAndModify(query, update, FindAndModifyOptions.options().returnNew(true).upsert(true),
-                    OrderDocument.class);
+            this.queryRepository.save(mongoOrder);
         }
     }
 }
